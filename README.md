@@ -326,3 +326,179 @@ Funcionalidades mínimas:
 * Migrar exercícios para `pandas` e `numpy`
 * Criar backtests simples
 * Integrar com Machine Learning
+* 
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+python-essencial/
+├── pyproject.toml
+├── poetry.lock
+├── README.md
+├── .gitignore
+├── .venv/
+├── src/
+│   └── python_essencial/
+│       ├── __init__.py
+│       ├── bloco_01_sintaxe.py
+│       ├── bloco_02_funcoes.py
+│       ├── bloco_03_estruturas.py
+│       ├── bloco_04_classes.py
+│       ├── bloco_05_excecoes.py
+│       ├── bloco_06_generators.py
+│       ├── bloco_07_datas_io.py
+│       ├── bloco_08_organizacao.py
+│       └── bloco_09_qualidade.py
+└── tests/
+    ├── __init__.py
+    └── test_bloco_01.py
+```
+
+---
+
+## ⚙️ Configuração Inicial
+
+### 1️⃣ Criar o projeto com Poetry
+
+```bash
+poetry init -n
+poetry config virtualenvs.in-project true
+poetry install
+poetry run python scripts/bootstrap.py
+```
+
+---
+
+## 📦 `pyproject.toml` (Base Recomendada)
+
+```toml
+[tool.poetry]
+name = "python-essencial"
+version = "0.1.0"
+description = "Exercícios profissionais para dominar o essencial de Python"
+authors = ["Seu Nome <seu@email.com>"]
+readme = "README.md"
+packages = [{ include = "python_essencial", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.0"
+isort = "^5.13.2"
+mypy = "^1.8.0"
+pytest = "^8.0.0"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+```
+
+---
+
+## 🧪 Testes
+
+Os testes ficam em `tests/` e seguem o padrão `pytest`.
+
+Exemplo:
+
+```python
+from python_essencial.bloco_01_sintaxe import filtrar_pares
+
+
+def test_filtrar_pares():
+    assert filtrar_pares([1, 2, 3, 4]) == [16, 4]
+```
+
+Rodar testes:
+
+```bash
+poetry run pytest
+```
+
+---
+
+## 🎯 Convenções do Projeto
+
+* Um arquivo por bloco de exercícios
+* Funções pequenas e puras
+* Tipagem explícita sempre que possível
+* Sem lógica no escopo global (exceto exemplos simples)
+
+---
+
+## 🧼 Qualidade de Código
+
+Formatar código:
+
+```bash
+poetry run black .
+poetry run isort .
+```
+
+Verificar tipos:
+
+```bash
+poetry run mypy src
+```
+
+---
+
+## ▶️ Execução Manual
+
+Para executar exemplos pontuais:
+
+```bash
+poetry run python -m python_essencial.bloco_01_sintaxe
+```
+
+Use:
+
+```python
+if __name__ == "__main__":
+```
+
+Apenas quando o arquivo puder ser executado isoladamente.
+
+---
+
+## 🚀 Fluxo de Trabalho Recomendado
+
+1. Criar branch ou commit para um bloco
+2. Resolver exercícios
+3. Rodar `black`, `mypy`, `pytest`
+4. Commitar com mensagem clara
+
+---
+
+## 🧠 Mentalidade
+
+> Este projeto não é sobre *terminar rápido*,
+> é sobre **pensar corretamente em Python**.
+
+---
+
+## 🔜 Próximas Evoluções
+
+* Adicionar Pandas e NumPy
+* Criar mini backtests
+* Introduzir notebooks Jupyter
+* Integrar com Machine Learning
+
+---
+
+💡 **Dica:** este template pode ser reutilizado como base para qualquer projeto Python profissional.
+
